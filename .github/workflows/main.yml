@@ -25,17 +25,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - name: make dir
-        run: |
-          mkdir public
-          touch public/index.html
-          echo "test" >> public/index.html
+      - uses: jakejarvis/hugo-build-action@master  # ...or replace 'master' with a full version tag, such as: v0.64.1
+        with:
+          args: --contentDir exampleSite/config.toml --minify --buildDrafts
       - name: push changes to remote
         run: |
           git config --global user.name "Ricardo-Warden"
           git config --global user.email "ricardo.alfonso@wardenautomation.com"
 
-          git add public/
+          git add exampleSite/public/
           git commit -m "commit message"
           git push
 
