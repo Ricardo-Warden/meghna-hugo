@@ -27,6 +27,8 @@ jobs:
       
       - name: make dir
         run: mkdir public
+      - name: list folders
+        run: ls
       - uses: actions/upload-artifact@master
         with:
           name: website
