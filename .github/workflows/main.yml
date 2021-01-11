@@ -24,19 +24,21 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - name: list folders
-        run: ls
       - name: installing hugo 
         run: |
           wget https://github.com/gohugoio/hugo/releases/download/v0.58.2/hugo_0.58.2_Linux-64bit.deb
           sudo dpkg -i hugo_0.58.2_Linux-64bit.deb
-          hugo --version
+          hugo version
+      - name: build public 
+        run: |
+          rm -rf public/
+          hugo
       - name: push changes to remote
         run: |
           git config --global user.name "Ricardo-Warden"
           git config --global user.email "ricardo.alfonso@wardenautomation.com"
 
-          git add exampleSite/public/
+          git add public/
           git commit -m "commit message"
           git push
 
