@@ -30,10 +30,13 @@ jobs:
           mkdir public
           touch public/index.html
           echo "test" >> public/index.html
-      - name: list folders
-        run: ls
-      - uses: actions/upload-artifact@master
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: website
-          path: public/
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: public
+          asset_name: mything
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "This is my release text"
 
