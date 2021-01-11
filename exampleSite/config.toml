@@ -1,4 +1,4 @@
-baseURL = "https://blog.starmedicalediting.com"
+baseURL = "https://blog.starmedicalediting.com/public/"
 disableLanguages = []
 disqusShortname = ""
 paginate = "6"
