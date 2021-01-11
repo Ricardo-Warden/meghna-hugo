@@ -31,14 +31,15 @@ jobs:
           hugo version
       - name: build public 
         run: |
+          cd exampleSite
           rm -rf public/
           hugo
       - name: push changes to remote
         run: |
           git config --global user.name "Ricardo-Warden"
           git config --global user.email "ricardo.alfonso@wardenautomation.com"
-
-          git add public/
+          
+          git add .
           git commit -m "commit message"
           git push
 
